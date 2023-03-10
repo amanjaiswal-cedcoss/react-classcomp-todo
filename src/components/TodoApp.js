@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Card, Form, InputGroup } from "react-bootstrap";
+import { Card} from "react-bootstrap";
 import { TodosProvider } from "../contexts/TodosContext";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Todos from "./Todos";
@@ -41,7 +41,7 @@ export class TodoApp extends Component {
     this.setState({ ...this.state, todos: todos });
   };
 
-  // fn to change add of todo
+  // fn to add a todo
   addTodo = (todo) => {
     if (todo === "") {
       alert("Please fill some info to add a todo");
@@ -74,9 +74,11 @@ export class TodoApp extends Component {
   };
 
   render() {
+    // refindTodos stores the todos matching with search query
     const refinedTodos = this.state.todos.filter((ele) =>
       ele.todo.toLowerCase().includes(this.state.search.toLowerCase())
     );
+
     return (
       <ThemeProvider value={this.state.theme}>
         <LoaderProvider value={this.state.loading}>
