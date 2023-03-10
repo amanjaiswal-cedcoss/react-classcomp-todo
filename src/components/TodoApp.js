@@ -7,6 +7,7 @@ import AddTodo from "./AddTodo";
 import { DarkModeOutlined, WbSunnyOutlined } from "@mui/icons-material";
 import { ThemeProvider } from "../contexts/ThemeContext";
 import { LoaderProvider } from "../contexts/LoaderContext";
+import SearchBar from "./SearchBar";
 
 export class TodoApp extends Component {
   constructor(props) {
@@ -84,6 +85,7 @@ export class TodoApp extends Component {
               changeTodoStatus: this.changeTodoStatus,
               addTodo: this.addTodo,
               refinedTodos: refinedTodos,
+              searchTodos:this.searchTodos
             }}
           >
             <Card className={`container ${this.state.theme}`}>
@@ -101,16 +103,7 @@ export class TodoApp extends Component {
                 </button>
               </Card.Header>
               <Card.Body>
-                <InputGroup className="mb-4">
-                  <InputGroup.Text className="border-end-0 bg-transparent">
-                    &#128269;
-                  </InputGroup.Text>
-                  <Form.Control
-                    onChange={this.searchTodos}
-                    className="border-start-0"
-                    placeholder="Search for a todo..."
-                  />
-                </InputGroup>
+                <SearchBar/>
                 <AddTodo />
                 <Todos />
               </Card.Body>
